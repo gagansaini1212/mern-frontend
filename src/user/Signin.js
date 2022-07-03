@@ -3,7 +3,7 @@ import Base from '../core/Base';
 const signinFrom = () => {
   return (
     <div className="row">
-      <div className="col-md offset-sm-3 text-left">
+      <div className="col-md-6 offset-sm-3 text-left">
         <form>
           <div className="form-group">
             <label className="text-light">Email</label>
