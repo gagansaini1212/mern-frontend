@@ -1,4 +1,6 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+
+import { signout, isAuthenticated } from '../auth/helper';
 
 const MenuItem = ({ title, to, className }) => (
   <li className="nav-item">
@@ -9,8 +11,8 @@ const MenuItem = ({ title, to, className }) => (
 );
 
 const Menu = () => {
+  const navigate = useNavigate();
   let location = useLocation();
-  console.log('location', location.pathname);
   return (
     <div>
       <ul className="nav nav-tabs bg-dark">
@@ -54,13 +56,20 @@ const Menu = () => {
             location.pathname === '/signin' ? 'text-white' : 'text-info'
           }
         />
-        <MenuItem
-          title="Sign Out"
-          to="/signout"
-          className={
-            location.pathname === '/signout' ? 'text-white' : 'text-info'
-          }
-        />
+        {isAuthenticated() && (
+          <li className="nav-item">
+            <span
+              onClick={() => {
+                signout(() => {
+                  navigate('/');
+                });
+              }}
+              className="nav-link text-warning"
+            >
+              Signout
+            </span>
+          </li>
+        )}
       </ul>
     </div>
   );
