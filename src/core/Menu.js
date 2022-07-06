@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { signout, isAuthenticated } from '../auth/helper';
@@ -42,20 +43,24 @@ const Menu = () => {
               : 'text-info'
           }
         />
-        <MenuItem
-          title="Signup"
-          to="/signup"
-          className={
-            location.pathname === '/signup' ? 'text-white' : 'text-info'
-          }
-        />
-        <MenuItem
-          title="Sign In"
-          to="/signin"
-          className={
-            location.pathname === '/signin' ? 'text-white' : 'text-info'
-          }
-        />
+        {!isAuthenticated() && (
+          <React.Fragment>
+            <MenuItem
+              title="Signup"
+              to="/signup"
+              className={
+                location.pathname === '/signup' ? 'text-white' : 'text-info'
+              }
+            />
+            <MenuItem
+              title="Sign In"
+              to="/signin"
+              className={
+                location.pathname === '/signin' ? 'text-white' : 'text-info'
+              }
+            />
+          </React.Fragment>
+        )}
         {isAuthenticated() && (
           <li className="nav-item">
             <span
