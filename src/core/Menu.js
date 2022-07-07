@@ -27,22 +27,28 @@ const Menu = () => {
           to="/cart"
           className={location.pathname === '/cart' ? 'text-white' : 'text-info'}
         />
-        <MenuItem
-          title="Dashboard"
-          to="/user/dashboard"
-          className={
-            location.pathname === '/user/dashboard' ? 'text-white' : 'text-info'
-          }
-        />
-        <MenuItem
-          title="A. Dashboard"
-          to="/admin/dashboard"
-          className={
-            location.pathname === '/admin/dashboard'
-              ? 'text-white'
-              : 'text-info'
-          }
-        />
+        {isAuthenticated() && (
+          <MenuItem
+            title="Dashboard"
+            to="/user/dashboard"
+            className={
+              location.pathname === '/user/dashboard'
+                ? 'text-white'
+                : 'text-info'
+            }
+          />
+        )}
+        {isAuthenticated() && isAuthenticated().user.role === 1 && (
+          <MenuItem
+            title="A. Dashboard"
+            to="/admin/dashboard"
+            className={
+              location.pathname === '/admin/dashboard'
+                ? 'text-white'
+                : 'text-info'
+            }
+          />
+        )}
         {!isAuthenticated() && (
           <React.Fragment>
             <MenuItem
