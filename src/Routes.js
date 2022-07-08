@@ -8,6 +8,10 @@ import Signin from './user/Signin';
 import Signup from './user/Signup';
 import UserDashBoard from './user/UserDashBoard';
 import AdminDashBoard from './user/AdminDashBoard';
+import AddCategory from './admin/AddCategory';
+import AddProduct from './admin/AddProduct';
+import ManageProducts from './admin/ManageProducts';
+import ManageOrders from './admin/Orders';
 
 const RoutesPath = () => {
   return (
@@ -21,6 +25,22 @@ const RoutesPath = () => {
         </Route>
         <Route exact path="/admin/dashboard" element={<AdminRoute />}>
           <Route exact path="/admin/dashboard" element={<AdminDashBoard />} />
+        </Route>
+        <Route exact path="/admin/create/category" element={<AdminRoute />}>
+          <Route
+            exact
+            path="/admin/create/category"
+            element={<AddCategory />}
+          />
+        </Route>
+        <Route exact path="/admin/create/products" element={<AdminRoute />}>
+          <Route exact path="/admin/create/products" element={<AddProduct />} />
+        </Route>
+        <Route exact path="/admin/products" element={<AdminRoute />}>
+          <Route exact path="/admin/products" element={<ManageProducts />} />
+        </Route>
+        <Route exact path="/admin/orders" element={<AdminRoute />}>
+          <Route exact path="/admin/orders" element={<ManageOrders />} />
         </Route>
       </Routes>
     </Router>
