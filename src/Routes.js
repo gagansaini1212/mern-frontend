@@ -12,6 +12,7 @@ import AddCategory from './admin/AddCategory';
 import AddProduct from './admin/AddProduct';
 import ManageProducts from './admin/ManageProducts';
 import ManageOrders from './admin/Orders';
+import ManageCategories from './admin/ManageCategories';
 
 const RoutesPath = () => {
   return (
@@ -41,6 +42,13 @@ const RoutesPath = () => {
         </Route>
         <Route exact path="/admin/orders" element={<AdminRoute />}>
           <Route exact path="/admin/orders" element={<ManageOrders />} />
+        </Route>
+        <Route exact path="/admin/categories" element={<AdminRoute />}>
+          <Route
+            exact
+            path="/admin/categories"
+            element={<ManageCategories />}
+          />
         </Route>
       </Routes>
     </Router>

@@ -20,6 +20,11 @@ export default function AdminDashboard() {
             </Link>
           </li>
           <li className="list-group-item">
+            <Link className="nav-link text-success" to="/admin/categories">
+              Manage categories
+            </Link>
+          </li>
+          <li className="list-group-item">
             <Link className="nav-link text-success" to="/admin/create/products">
               Create Products
             </Link>
