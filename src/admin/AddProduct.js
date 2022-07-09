@@ -55,30 +55,28 @@ const AddProduct = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     setValues({ ...values, error: '', loading: true });
+    createProduct(user._id, token, formData).then((data) => {
+      if (data.error) {
+        setValues({ ...values, error: data.error });
+      } else {
+        setValues({
+          ...values,
+          name: '',
+          description: '',
+          price: '',
+          photo: '',
+          stock: '',
+          loading: false,
+          createdProduct: data.name,
+        });
+      }
+    });
   };
 
   const handleChange = (name) => (event) => {
     const value = name === 'photo' ? event.target.files[0] : event.target.value;
     formData.set(name, value);
     setValues({ ...values, [name]: value });
-    createProduct(user._id, token, formData)
-      .then((data) => {
-        if (data.error) {
-          setValues({ ...values, error: data.error });
-        } else {
-          setValues({
-            ...values,
-            name: '',
-            description: '',
-            price: '',
-            photo: '',
-            stock: '',
-            loading: false,
-            createdProduct: data.name,
-          });
-        }
-      })
-      .catch();
   };
 
   const successMessage = () => {
