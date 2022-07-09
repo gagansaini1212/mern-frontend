@@ -30,10 +30,8 @@ const AddProduct = () => {
     photo,
     categories,
     category,
-    loading,
     error,
     createdProduct,
-    getARedirect,
     formData,
   } = values;
 
@@ -93,16 +91,6 @@ const AddProduct = () => {
   const warningMessage = () => {
     if (error) {
       return <h4 className="text-success">Failed to create product!</h4>;
-    }
-  };
-
-  const performRedirect = () => {
-    if (getARedirect) {
-      if (loading === false) {
-        return <Navigate to="/admin/dashboard" />;
-      } else {
-        return <Navigate to="/" />;
-      }
     }
   };
 
@@ -195,7 +183,6 @@ const AddProduct = () => {
         <div className="col-md-8 offset-md-2">
           {successMessage()}
           {warningMessage()}
-          {performRedirect()}
           {createProductForm()}
         </div>
       </div>
