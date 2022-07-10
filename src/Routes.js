@@ -13,6 +13,8 @@ import AddProduct from './admin/AddProduct';
 import ManageProducts from './admin/ManageProducts';
 import ManageOrders from './admin/Orders';
 import ManageCategories from './admin/ManageCategories';
+import UpdateProduct from './admin/UpdateProduct';
+import UpdateCategory from './admin/UpdateCategory';
 
 const RoutesPath = () => {
   return (
@@ -48,6 +50,28 @@ const RoutesPath = () => {
             exact
             path="/admin/categories"
             element={<ManageCategories />}
+          />
+        </Route>
+        <Route
+          exact
+          path="/admin/product/update/:productId"
+          element={<AdminRoute />}
+        >
+          <Route
+            exact
+            path="/admin/product/update/:productId"
+            element={<UpdateProduct />}
+          />
+        </Route>
+        <Route
+          exact
+          path="/admin/category/update/:categoryId"
+          element={<AdminRoute />}
+        >
+          <Route
+            exact
+            path="/admin/category/update/:categoryId"
+            element={<UpdateCategory />}
           />
         </Route>
       </Routes>
